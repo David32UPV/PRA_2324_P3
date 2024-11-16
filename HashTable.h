@@ -154,24 +154,10 @@ template <typename V> class HashTable : public Dict<V> {
 
 		// Sobrecarga del operador [] -> Devuelve el valor correspondiente a key. Si no existe (i.e. si no lo encuentras), lanza std::runtime_error
 		V operator[](std::string key){
-			int cubeta = h(key);
-			// Traducir a este contexto: Node<T>* aux = first;
-			Node<TableEntry<V>>* aux = table[cubeta].getFirst();
+			V resultado = search(key);
+			return resultado;
 
-			// Recorrido de la secuencia enlazada
-			while(aux != nullptr){
-				// Si encontramos key devolvemos su valor
-				if(aux->data.key == key)
-					return aux->data.value;
-				// Si no encontramos key, avanzamos en el bucle hasta encontrarlo
-				aux = aux->next;
-			}
-			
-			// Si no hemos encontrado key lanzamos la excepción
-			throw std::runtime_error("Esta clave NO existe en el diccionario: " + key);
-			
-		}
-    
+  		 } 
 		// Sobrecarga global del operador << para imprimir el contenido de la tabla hash por pantalla
 		friend std::ostream& operator<<(std::ostream &out, const HashTable<V> &th){
 			out << "HashTable [entries: " << th.entries() << ", capacity: " << th.capacity() << "]" << "\n";
