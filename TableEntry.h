@@ -44,6 +44,17 @@ template <typename V> class TableEntry {
 			return !(te1 == te2);
 		}
 
+		// Sobrecarga global del operador < para determinar que una instancia de TableEntry es menor que otra si su key es menor
+		friend bool operator<(const TableEntry<V> &te1, const TableEntry<V> &te2){
+			return (te1.key < te2.key);
+		}
+	
+		// Sobrecarga global del operador > para determinar que una instancia de TableEntry es mayor que otra si su key es mayor
+		friend bool operator>(const TableEntry<V> &te1, const TableEntry<V> &te2){
+			// Negamos el resultado del operador <
+			return !(te1.key < te2.key);
+		}
+
 		// Sobrecarga global de operador << para imprimir el contenido de la entrada (par clave->valor) por pantalla
 		friend std::ostream& operator<<(std::ostream &out, const TableEntry<V> &te){
 			out << "('" << te.key << "' => " << te.value << ")";
