@@ -84,7 +84,8 @@ class BSTree {
 				n->left = remove(n->left, e);
 			}
 			else{
-				// Decrementamos el contador del número de elementos en el ABB tras haber llamado a las funciones recursivas de remove 
+				// Decrementamos el contador del número de elementos en el ABB en el punto donde se identifica que el nodo actual n contiene el elemento a eliminar.
+				// Es en este momento cuando sabemos que el ABB perderá un elemento (decrementamos el contador antes de llamar a reove_max())
 				n_elem--;
 				// Si eliminamos un nodo con 2 sucesores, i.e. tanto izquierda como derecha apuntan a algo
 				if(n->left != nullptr && n->right != nullptr){
