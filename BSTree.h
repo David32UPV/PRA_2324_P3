@@ -196,7 +196,7 @@ class BSTree {
 		// Elimina el elemento e del ABB. Actúa como método lanzadera del método privado recursivo remove(BSNode<T>* n, T e)
 		void remove(T e){
 			root = remove(root, e);
-		}
+		}	
 
 		// Método destructor. Delega en el método privado recursivo delete_cascade()
 		~BSTree(){

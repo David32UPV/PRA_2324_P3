@@ -26,11 +26,13 @@ template <typename V> class TableEntry {
 		// Constructor 2 -> Crea una entrada solo con clave (sin valor)
 		TableEntry(std::string key){
 			this->key = key;
+			value = 0;
 		}
 		
 		// Constructor 3 -> Crea una entrada con la clave "" (cadena vacía) y sin valor
 		TableEntry(){
 			key = "";
+			value = 0;
 		}
 		
 		// Sobrecarga global del operador == para determinar que 2 instancias de TableEntry son iguales solo si comparten la misma clave (con independencia de valor)
@@ -52,7 +54,7 @@ template <typename V> class TableEntry {
 		// Sobrecarga global del operador > para determinar que una instancia de TableEntry es mayor que otra si su key es mayor
 		friend bool operator>(const TableEntry<V> &te1, const TableEntry<V> &te2){
 			// Negamos el resultado del operador <
-			return !(te1.key < te2.key);
+			return (te1.key > te2.key);
 		}
 
 		// Sobrecarga global de operador << para imprimir el contenido de la entrada (par clave->valor) por pantalla
