@@ -1,5 +1,5 @@
 #include<iostream>
-#include "HashTable.h"
+#include "HashTable2.h"
 
 int main() {
     HashTable<int> dict = HashTable<int>(3);
